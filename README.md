@@ -28,7 +28,13 @@ Further, there are tasks db:dump and db:load which do the entire database (the e
     rake db:data:dump_dir   ->   Dump contents of database to curr_dir_name/tablename.extension (defaults to yaml)
     rake db:data:load_dir   ->   Load contents of db/data_dir into database
 
+
 In addition, we have plugins whereby you can export your database to/from various formats.  We only deal with yaml and csv right now, but you can easily write tools for your own formats (such as Excel or XML).  To use another format, just load setting the "class"  parameter to the class you are using.  This defaults to "YamlDb::Helper" which is a refactoring of the old yaml_db code.  We'll shorten this to use class nicknames in a little bit.
+
+If you do not want to truncate the table, you can set this as an environment variable
+
+    yaml_db_truncate=false rake db:data:load
+    yaml_db_truncate=false rake db:data:load_dir
 
 ## Examples
 
