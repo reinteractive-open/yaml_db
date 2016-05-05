@@ -63,4 +63,26 @@ RSpec.describe 'Rake tasks' do
       subject.invoke
     end
   end
+
+  describe 'db:data:load_no_truncate' do
+    it 'loads the environment' do
+      expect(subject.prerequisites).to eq(['environment'])
+    end
+
+    it 'invokes the correct task' do
+      expect(YamlDb::RakeTasks).to receive(:data_load_task).once.with(false)
+      subject.invoke
+    end
+  end
+
+  describe 'db:data:load_dir_no_truncate' do
+    it 'loads the environment' do
+      expect(subject.prerequisites).to eq(['environment'])
+    end
+
+    it 'invokes the correct task' do
+      expect(YamlDb::RakeTasks).to receive(:data_load_dir_task).once.with(false)
+      subject.invoke
+    end
+  end
 end

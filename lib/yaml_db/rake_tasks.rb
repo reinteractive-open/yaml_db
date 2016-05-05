@@ -9,13 +9,13 @@ module YamlDb
       SerializationHelper::Base.new(helper).dump_to_dir(dump_dir("/#{dir}"))
     end
 
-    def self.data_load_task
-      SerializationHelper::Base.new(helper).load(db_dump_data_file(helper.extension))
+    def self.data_load_task(truncate = true)
+      SerializationHelper::Base.new(helper).load(db_dump_data_file(helper.extension), truncate)
     end
 
-    def self.data_load_dir_task
+    def self.data_load_dir_task(truncate = true)
       dir = ENV['dir'] || 'base'
-      SerializationHelper::Base.new(helper).load_from_dir(dump_dir("/#{dir}"))
+      SerializationHelper::Base.new(helper).load_from_dir(dump_dir("/#{dir}"), truncate)
     end
 
     private

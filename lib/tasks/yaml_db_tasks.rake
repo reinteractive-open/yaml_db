@@ -25,5 +25,15 @@ namespace :db do
     task :load_dir  => :environment do
       YamlDb::RakeTasks.data_load_dir_task
     end
+
+    desc "Load contents of db/data.extension (defaults to yaml) into database without truncating tables"
+    task :load_no_truncate => :environment do
+      YamlDb::RakeTasks.data_load_task(false)
+    end
+
+    desc "Load contents of db/data_dir into database without truncating tables"
+    task :load_dir_no_truncate  => :environment do
+      YamlDb::RakeTasks.data_load_dir_task(false)
+    end
   end
 end
